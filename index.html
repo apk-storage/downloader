@@ -1,129 +1,221 @@
-<!DOCTYPE html>
+   <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<title>Загрузка APK</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<style>
+  <meta charset="UTF-8">
+  <title>Загрузка APK</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    :root {
+      --bg: #f5f5f7;
+      --card: #ffffff;
+      --accent: #007aff;
+      --accent-soft: rgba(0, 122, 255, 0.08);
+      --text-main: #111111;
+      --text-sub: #555555;
+      --radius-lg: 22px;
+      --shadow-soft: 0 18px 40px rgba(0,0,0,0.06);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
-        background: #090909;
-        color: #ffffff;
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 40px 5vw;
-        font-size: 28px;
+      margin: 0;
+      padding: 40px 16px;
+      background: radial-gradient(circle at top, #ffffff 0, #f5f5f7 45%, #e9ebf1 100%);
+      color: var(--text-main);
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text","Segoe UI", system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased;
     }
 
-    h1 {
-        text-align: center;
-        margin: 20px 0 40px 0;
-        font-size: 44px;
+    .page {
+      max-width: 960px;
+      margin: 0 auto;
     }
 
-    .btn {
-        display: block;
-        background: #1b1b1b;
-        padding: 26px 20px;
-        margin: 18px 0;
-        text-decoration: none;
-        color: #00b0ff;
-        font-size: 32px;
-        border-radius: 12px;
-        text-align: center;
-        border: 2px solid #333333;
+    header {
+      text-align: center;
+      margin-bottom: 32px;
     }
 
-    .btn:focus,
-    .btn:hover {
-        outline: none;
-        border-color: #00b0ff;
-        background: #222222;
+    header h1 {
+      margin: 0 0 8px;
+      font-size: 40px;
+      font-weight: 700;
     }
 
-    .container {
-        max-width: 900px;
-        margin: 0 auto;
+    header p {
+      margin: 0;
+      font-size: 18px;
+      color: var(--text-sub);
+    }
+
+    .cards {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      margin-bottom: 40px;
+    }
+
+    .app-card {
+      display: block;
+      background: color-mix(in srgb, var(--card) 90%, #f7f9ff 10%);
+      border-radius: var(--radius-lg);
+      padding: 20px 24px;
+      text-decoration: none;
+      color: inherit;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(0,0,0,0.04);
+      transition: transform 0.12s ease-out, box-shadow 0.12s ease-out, border-color 0.12s ease-out, background 0.12s ease-out;
+    }
+
+    .app-card:focus-visible,
+    .app-card:hover {
+      outline: none;
+      transform: translateY(-2px);
+      box-shadow: 0 22px 50px rgba(0,0,0,0.10);
+      border-color: rgba(0,122,255,0.45);
+      background: color-mix(in srgb, var(--card) 85%, var(--accent-soft) 15%);
+    }
+
+    .app-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 22px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .app-emoji {
+      font-size: 26px;
+    }
+
+    .app-sub {
+      font-size: 16px;
+      color: var(--text-sub);
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 10px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 500;
     }
 
     .donate-block {
-        text-align: center;
-        margin-top: 70px;
+      margin-top: 24px;
+      padding: 24px 24px 30px;
+      border-radius: var(--radius-lg);
+      background: rgba(255,255,255,0.9);
+      box-shadow: var(--shadow-soft);
+      text-align: center;
+      border: 1px solid rgba(0,0,0,0.04);
     }
 
     .donate-title {
-        font-size: 38px;
-        margin-bottom: 20px;
+      font-size: 24px;
+      font-weight: 600;
+      margin-bottom: 6px;
     }
 
     .donate-sub {
-        font-size: 26px;
-        margin-bottom: 25px;
-        color: #aaaaaa;
+      font-size: 15px;
+      color: var(--text-sub);
+      margin-bottom: 18px;
+    }
+
+    .donate-qr-wrapper {
+      display: inline-block;
+      padding: 12px;
+      border-radius: 26px;
+      background: linear-gradient(145deg, #ffffff, #f0f2ff);
+      box-shadow: inset 0 0 0 1px rgba(0,0,0,0.03), 0 16px 40px rgba(0,0,0,0.08);
     }
 
     .donate-qr {
-        width: 260px;
-        height: 260px;
-        border-radius: 18px;
-        border: 2px solid #333333;
-        background: #000000;
+      display: block;
+      width: 220px;
+      height: 220px;
+      border-radius: 16px;
+      background: #ffffff;
     }
 
-    @media (max-width: 600px) {
-        body {
-            padding: 30px 4vw;
-            font-size: 22px;
-        }
-        h1 {
-            font-size: 32px;
-        }
-        .btn {
-            font-size: 24px;
-            padding: 20px 16px;
-        }
-        .donate-title {
-            font-size: 28px;
-        }
-        .donate-sub {
-            font-size: 20px;
-        }
-        .donate-qr {
-            width: 220px;
-            height: 220px;
-        }
+    @media (max-width: 720px) {
+      body {
+        padding: 24px 10px;
+      }
+      header h1 {
+        font-size: 30px;
+      }
+      .app-card {
+        padding: 18px 18px;
+      }
+      .app-title {
+        font-size: 20px;
+      }
+      .donate-qr {
+        width: 200px;
+        height: 200px;
+      }
     }
-</style>
+  </style>
 </head>
 <body>
-<div class="container">
+  <main class="page">
+    <header>
+      <h1>Загрузка APK</h1>
+      <p>Установочные файлы для Android&nbsp;TV и медиаприставок</p>
+    </header>
 
-    <h1>Загрузка APK</h1>
+    <section class="cards" aria-label="Приложения для скачивания">
+      <a class="app-card" href="https://github.com/lampa-app/LAMPA/releases/latest/download/app-lite-release.apk">
+        <div class="app-title">
+          <span class="app-emoji">📺</span>
+          <span>Lampa</span>
+        </div>
+        <div class="app-sub">Киноприложение, последняя доступная версия с GitHub Releases.</div>
+        <div class="tag">Автообновляемая ссылка</div>
+      </a>
 
-    <a class="btn" href="https://github.com/lampa-app/LAMPA/releases/latest/download/app-lite-release.apk">
-        📺 Скачать Lampa (последняя версия)
-    </a>
+      <a class="app-card" href="https://github.com/YouROK/TorrServer/releases/latest/download/TorrServer-android-arm7">
+        <div class="app-title">
+          <span class="app-emoji">🧲</span>
+          <span>TorrServer (ARMv7)</span>
+        </div>
+        <div class="app-sub">Сборка для большинства TV-боксов и приставок на ARMv7.</div>
+        <div class="tag">Автообновление через GitHub</div>
+      </a>
 
-    <a class="btn" href="https://github.com/YouROK/TorrServer/releases/latest/download/TorrServer-android-arm7">
-        🧲 Скачать TorrServer (ARMv7, автообновление)
-    </a>
+      <a class="app-card" href="https://github.com/YouROK/TorrServer/releases/latest/download/TorrServer-android-arm64">
+        <div class="app-title">
+          <span class="app-emoji">🧲</span>
+          <span>TorrServer (ARM64)</span>
+        </div>
+        <div class="app-sub">Версия для современных устройств на 64-битном ARM.</div>
+        <div class="tag">Автообновление через GitHub</div>
+      </a>
+    </section>
 
-    <a class="btn" href="https://github.com/YouROK/TorrServer/releases/latest/download/TorrServer-android-arm64">
-        🧲 Скачать TorrServer (ARM64, автообновление)
-    </a>
-
-    <div class="donate-block">
-    <div class="donate-title">Угостить кофе</div>
-    <div class="donate-sub">Отсканируйте QR камерой телефона</div>
-    <img
-    class="donate-qr"
-    src="qr-code.png"
-    alt="QR YooMoney"
-/>
-
-    </div>
-</div>
-
-
-</div>
+    <section class="donate-block" aria-label="Поддержать проект">
+      <div class="donate-title">Угостить кофе</div>
+      <div class="donate-sub">Откройте камеру телефона и наведите её на QR-код</div>
+      <div class="donate-qr-wrapper">
+        <img
+          class="donate-qr"
+          src="qr-code.png"
+          alt="QR-код для доната"
+        >
+      </div>
+    </section>
+  </main>
 </body>
 </html>
+     
