@@ -2,52 +2,125 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<title>SVR Telecom — APK Downloads</title>
+<title>Загрузка APK</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
     body {
-        background: #111;
-        color: #fff;
+        background: #090909;
+        color: #ffffff;
         font-family: Arial, sans-serif;
-        padding: 40px;
-        font-size: 32px;
+        margin: 0;
+        padding: 40px 5vw;
+        font-size: 28px;
     }
+
     h1 {
         text-align: center;
-        margin-bottom: 50px;
-        font-size: 48px;
+        margin: 20px 0 40px 0;
+        font-size: 44px;
     }
-    a.download {
+
+    .btn {
         display: block;
-        background: #222;
-        padding: 30px;
-        margin: 25px 0;
+        background: #1b1b1b;
+        padding: 26px 20px;
+        margin: 18px 0;
         text-decoration: none;
-        color: #00adee;
-        font-size: 36px;
-        border-radius: 10px;
+        color: #00b0ff;
+        font-size: 32px;
+        border-radius: 12px;
         text-align: center;
-        border: 2px solid #444;
+        border: 2px solid #333333;
     }
-    a.download:hover {
-        background: #333;
+
+    .btn:focus,
+    .btn:hover {
+        outline: none;
+        border-color: #00b0ff;
+        background: #222222;
+    }
+
+    .container {
+        max-width: 900px;
+        margin: 0 auto;
+    }
+
+    .donate-block {
+        text-align: center;
+        margin-top: 70px;
+    }
+
+    .donate-title {
+        font-size: 38px;
+        margin-bottom: 20px;
+    }
+
+    .donate-sub {
+        font-size: 26px;
+        margin-bottom: 25px;
+        color: #aaaaaa;
+    }
+
+    .donate-qr {
+        width: 260px;
+        height: 260px;
+        border-radius: 18px;
+        border: 2px solid #333333;
+        background: #000000;
+    }
+
+    @media (max-width: 600px) {
+        body {
+            padding: 30px 4vw;
+            font-size: 22px;
+        }
+        h1 {
+            font-size: 32px;
+        }
+        .btn {
+            font-size: 24px;
+            padding: 20px 16px;
+        }
+        .donate-title {
+            font-size: 28px;
+        }
+        .donate-sub {
+            font-size: 20px;
+        }
+        .donate-qr {
+            width: 220px;
+            height: 220px;
+        }
     }
 </style>
 </head>
 <body>
+<div class="container">
 
-<h1>SVR Telecom — Загрузка APK</h1>
+    <h1>Загрузка APK</h1>
 
-<a class="download" href="https://github.com/lampa-app/LAMPA/releases/latest/download/app-lite-release.apk">
-    📺 Скачать Lampa (последняя версия)
-</a>
+    <a class="btn" href="https://github.com/lampa-app/LAMPA/releases/latest/download/app-lite-release.apk">
+        📺 Скачать Lampa (последняя версия)
+    </a>
 
-<a class="download" href="https://github.com/YouROK/TorrServer/releases/latest/download/TorrServer-android-arm7">
-    🧲 Скачать TorrServer (ARMv7, автообновление)
-</a>
+    <a class="btn" href="https://github.com/YouROK/TorrServer/releases/latest/download/TorrServer-android-arm7">
+        🧲 Скачать TorrServer (ARMv7, автообновление)
+    </a>
 
-<a class="download" href="https://github.com/YouROK/TorrServer/releases/latest/download/TorrServer-android-arm64">
-    🧲 Скачать TorrServer (ARM64, автообновление)
-</a>
+    <a class="btn" href="https://github.com/YouROK/TorrServer/releases/latest/download/TorrServer-android-arm64">
+        🧲 Скачать TorrServer (ARM64, автообновление)
+    </a>
 
+    <div class="donate-block">
+        <div class="donate-title">Угостить кофе</div>
+        <div class="donate-sub">Отсканируйте QR камерой телефона</div>
+        <img
+            class="donate-qr"
+            alt="QR YooMoney"
+            src="https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl=http%3A%2F%2Fyoomoney.ru%2Fto%2F410016180651954&choe=UTF-8"
+        >
+    </div>
+
+</div>
 </body>
 </html>
